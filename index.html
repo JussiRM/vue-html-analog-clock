@@ -2,9 +2,187 @@
 <html>
 	<head>
 		<title>Demo Page</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 		<script src="dist/vueHtmlAnalogClock.umd.min.js"></script>
+		<link rel="stylesheet" href="github_pages/purple-theme.css" />
+		<link rel="stylesheet" href="github_pages/yellow-theme.css" />
+		<style>
+			html, body {
+				margin: 0; 
+				padding: 0;
+			}
+
+			div.analog-clock-demo-app {
+				margin: 50px auto;
+				width: 99%;
+				max-width: 900px;
+			}
+
+			div.flex {
+				display: flex;
+				flex-direction: row-reverse;
+			}
+
+			@media screen and (max-width: 600px) {
+				div.flex {
+					display: block;
+				}
+
+				div.flex div.content, div.flex div.menu {
+					width: auto;
+				}
+			}
+
+			div.content {
+				width: 0;
+				flex-grow: 3;
+				text-align: center;
+				overflow-x: hidden;
+			}
+
+			div.menu {
+				width: 0;
+				flex-grow: 2;
+				border-left: 1px dashed rgba(0,0,0, 0.33);
+				padding-left: 10px;
+			}
+
+			div.menu a {
+				display: block;
+				text-align: center;
+				padding: 10px;
+				background-color: #e1ebf2;
+				border: 1px solid rgba(0,0,0, 0.1);
+				border-radius: 5px;
+				margin-bottom: 5px;
+			}
+
+			div.menu a:hover {
+				background-color: #d3e2ed;
+			}
+
+			.m {
+				margin: 10px auto;
+			}
+		</style>
 	</head>
 	<body>
-		<p>Github Pages Test</p>
+		<div id="app"></div>
+
+		<script>
+			var app = new Vue({
+				el: "#app",
+				template: /*html*/`
+					<div class="analog-clock-demo-app">
+						<h1>Vue HTML Analog Clock Demo</h1>
+						<hr>
+						<div class="flex">
+							<div class="menu">
+								<a href="#" v-for="item in nav" @click.prevent="view = item.view">
+									{{item.text}}
+								</a>
+							</div>
+
+							<div class="content">
+								<template v-if="view == 'basic'">
+									<p>Clock with only size prop (not mandatory)</p>
+									<clock :size="400" />
+								</template>
+
+								<template v-else-if="view == 'set_time'">
+									<p>Set your own time to the clock</p>
+									<div style="margin: 10px;">
+										<input type="text" v-model="ownTimeInput" placeholder="HH:MM:SS">
+										<button type="button" @click.prevent="setOwnTime">Set</button>
+									</div>
+
+									<div style="margin: 10px;">
+										<button type="button" @click.prevent="setTimeFlowEnabled = !setTimeFlowEnabled">
+											Play/Pause
+										</button>
+									</div>
+
+									<p>Date object: {{ownTime}}</p>
+
+									<clock v-model="ownTime" :enable-time-flow="setTimeFlowEnabled" />
+								</template>
+
+								<template v-else-if="view == 'sizes'">
+									<p>Try different sizes</p>
+
+									<div style="margin: 10px;">
+										<button type="button" @click.prevent="sizesWidth = 100">Small</button>
+										<button type="button" @click.prevent="sizesWidth = 300">Medium</button>
+										<button type="button" @click.prevent="sizesWidth = 500">Large</button>
+									</div>
+
+									<div style="margin: 10px;">
+										<input type="number" step="1" v-model="sizesWidth">
+									</div>
+
+									<div :style="{ width: sizesWidth + 'px' }" style="margin: 0 auto;">
+										<clock :auto-size="true" />
+									</div>
+								</template>
+
+								<template v-else-if="view == 'themes'">
+									<div class="m">
+										<p>Simply Purple</p>
+										<clock :size="240" theme="purple" />
+									</div>
+
+									<div class="m" style="width: 90%; max-width: 500px;">
+										<p>The King's Watch...</p>
+										<clock :size="500" :auto-size="true" theme="yellow" />
+									</div>
+								</template>
+							</div>
+						</div>
+					</div>
+				`,
+
+				components: {
+					"clock": vueHtmlAnalogClock
+				},
+
+				data() { return {
+					view: "basic",
+					ownTimeInput: "",
+					ownTime: new Date(2021, 1, 1, 12, 15, 30),
+					setTimeFlowEnabled: true,
+					sizesWidth: 300
+				}},
+
+				computed: {
+					nav() {
+						return [
+							{ text: "Basic Clock", view: "basic" },
+							{ text: "Set your own time", view: "set_time" },
+							{ text: "Different sizes", view: "sizes" },
+							{ text: "Theming", view: "themes" }
+						]
+					}
+				},
+
+				methods: {
+					setOwnTime() {
+						var val = this.ownTimeInput;
+						if (/\d+\:\d+\:\d+/.test(val)) {
+							let splitValStr = val.split(":");
+							let splitVal = splitValStr.map(x => parseInt(x));
+							let newDate = new Date();
+							newDate.setHours(splitVal[0]);
+							newDate.setMinutes(splitVal[1]);
+							newDate.setSeconds(splitVal[2]);
+
+							this.ownTime = new Date(newDate);
+						}
+						else {
+							alert("Regex fail");
+						}
+					}
+				}
+			})
+		</script>
 	</body>
 </html>

@@ -1,6 +1,6 @@
 {
 	"name": "vue-html-analog-clock",
-	"version": "1.0.2",
+	"version": "1.0.4",
 	"private": false,
 	"description": "Analog Clock Component for VueJS",
 	"author": "Jussi Laitinen",

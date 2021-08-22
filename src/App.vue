@@ -20,8 +20,9 @@
 			<button type="button" @click.prevent="setDateFromInput">Set Time</button>
 		</div>
 
-		<div style="margin: 40px auto">
+		<div style="margin: 40px auto; width: 500px;">
 			<clock :size="size" 
+				:auto-size="true"
 				v-model="myDate"
 				:enable-time-flow="enableTimeFlow"
 				:transition-speed="80"

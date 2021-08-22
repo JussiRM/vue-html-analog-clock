@@ -1,0 +1,9 @@
+.vue-analog-clock.vue-analog-clock-purple div.clock-outer-ring {
+  background-color: purple;
+}
+.vue-analog-clock.vue-analog-clock-purple div.clock-container {
+  background-color: #ffe6ff;
+}
+.vue-analog-clock.vue-analog-clock-purple div.pointer {
+  background-color: #4d004d !important;
+}

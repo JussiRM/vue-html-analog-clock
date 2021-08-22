@@ -200,7 +200,7 @@ export default Vue.extend({
 			this.$emit('input', this.date);	
 			
 			// Calculate clock size if auto-size is enabled
-			if (this.autoSize) {
+			if (this.autoSize && !!this.$el) {
 				const myEl = this.$el;
 				const myParent = myEl.parentElement;
 

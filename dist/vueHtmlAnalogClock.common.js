@@ -618,12 +618,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"432b48a5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAnalogClock.vue?vue&type=template&id=73b3e9e6&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"432b48a5-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueAnalogClock.vue?vue&type=template&id=50b41286&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-analog-clock",class:_vm.themeClass,style:({ width: _vm.mySize + 'px', height: _vm.mySize + 'px' })},[_c('div',{staticClass:"clock-outer-ring"},[_c('div',{staticClass:"clock-container"},[_c('div',{staticClass:"center-dot pos-clock-center"}),_c('div',{staticClass:"pointer hour-pointer",style:(_vm.hourPointerStyle)}),_c('div',{staticClass:"pointer minute-pointer",style:(_vm.minutePointerStyle)}),_c('div',{staticClass:"pointer second-pointer",style:(_vm.secondPointerStyle)}),_c('div',{staticClass:"numbers"},_vm._l((_vm.clockFaces),function(n,index){return _c('div',{key:n,staticClass:"number",class:'number-' + index},[_c('span',{style:(_vm.numberSpanStyle)},[_vm._v(_vm._s(n))])])}),0)])])])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VueAnalogClock.vue?vue&type=template&id=73b3e9e6&
+// CONCATENATED MODULE: ./src/components/VueAnalogClock.vue?vue&type=template&id=50b41286&
 
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
@@ -780,7 +780,7 @@ const defaultSize = () => 320;
             this.date = new Date(newDate);
             this.$emit('input', this.date);
             // Calculate clock size if auto-size is enabled
-            if (this.autoSize) {
+            if (this.autoSize && !!this.$el) {
                 const myEl = this.$el;
                 const myParent = myEl.parentElement;
                 if (!myParent) {
@@ -789,16 +789,6 @@ const defaultSize = () => 320;
                 const parentWidth = myParent.offsetWidth;
                 this.mySize = parentWidth;
             }
-        },
-        refresh_og() {
-            //this.date = new Date();
-            const timeNow = new Date();
-            const timeDiff = timeNow.valueOf() - this.dateTemp.valueOf();
-            this.dateTemp = new Date();
-            const newDate = this.date;
-            newDate.setMilliseconds(this.date.getMilliseconds() + timeDiff);
-            this.date = new Date(newDate);
-            this.$emit('input', this.date);
         },
         calculatePointerStyle(angle) {
             let obj = {};
