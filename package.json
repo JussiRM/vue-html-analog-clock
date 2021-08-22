@@ -1,9 +1,13 @@
 {
 	"name": "vue-html-analog-clock",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"private": false,
 	"description": "Analog Clock Component for VueJS",
 	"author": "Jussi Laitinen",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JussiRM/vue-html-analog-clock"
+	},
 	"license": "MIT",
 	"main": "dist/vueHtmlAnalogClock.common.js",
 	"files": [
