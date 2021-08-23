@@ -2,6 +2,8 @@
 
 Pretty simple analog clock, for whatever purpose it might be needed.
 
+![Clock](https://jussirm.github.io/vue-html-analog-clock/github_pages/kello.png)
+
 Features:
 - Supports v-model and by default updates the time every second (this can be changed from props)
 - Should be themeable with CSS, with `theme` prop.
