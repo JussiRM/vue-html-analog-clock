@@ -6,7 +6,7 @@
   "author": "Jussi Laitinen",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vueHtmlAnalogClock src/components/VueAnalogClock.vue",
+    "build": "npm run test:unit && vue-cli-service build --target lib --name vueHtmlAnalogClock src/components/VueAnalogClock.vue",
     "test:unit": "vue-cli-service test:unit"
   },
   "main": "dist/vueHtmlAnalogClock.common.js",
