@@ -1,42 +1,46 @@
 {
-	"name": "vue-html-analog-clock",
-	"version": "1.0.4",
-	"private": false,
-	"description": "Analog Clock Component for VueJS",
-	"author": "Jussi Laitinen",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/JussiRM/vue-html-analog-clock"
-	},
-	"license": "MIT",
-	"main": "dist/vueHtmlAnalogClock.common.js",
-	"files": [
-		"dist/*.js",
-		"dist/*.css"
-	],
-	"keywords": [
-		"vue",
-		"clock",
-		"analog"
-	],
-	"scripts": {
-		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build --target lib --name vueHtmlAnalogClock src/components/VueAnalogClock.vue"
-	},
-	"dependencies": {
-		"vue": "^2.6.11"
-	},
-	"devDependencies": {
-		"@vue/cli-plugin-typescript": "^4.5.13",
-		"@vue/cli-service": "~4.5.0",
-		"sass": "^1.38.0",
-		"sass-loader": "^10.2.0",
-		"typescript": "~4.1.5",
-		"vue-template-compiler": "^2.6.11"
-	},
-	"browserslist": [
-		"> 1%",
-		"last 2 versions",
-		"not dead"
-	]
+  "name": "vue-html-analog-clock",
+  "version": "1.0.4",
+  "private": false,
+  "description": "Analog Clock Component for VueJS",
+  "author": "Jussi Laitinen",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name vueHtmlAnalogClock src/components/VueAnalogClock.vue",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "main": "dist/vueHtmlAnalogClock.common.js",
+  "files": [
+    "dist/*.js",
+    "dist/*.css"
+  ],
+  "dependencies": {
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "@vue/cli-plugin-typescript": "^4.5.13",
+    "@vue/cli-plugin-unit-jest": "^4.5.13",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/test-utils": "^1.0.3",
+    "sass": "^1.38.0",
+    "sass-loader": "^10.2.0",
+    "typescript": "~4.1.5",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "keywords": [
+    "vue",
+    "clock",
+    "analog"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JussiRM/vue-html-analog-clock"
+  }
 }
