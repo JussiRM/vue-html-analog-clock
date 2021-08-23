@@ -8,6 +8,8 @@ Features:
 - Can be pretty much any size, though it's forced 1:1 aspect ratio
 - Can be automatically adjusted to container width
 
+Demos can be found from the project github pages at https://jussirm.github.io/vue-html-analog-clock/
+
 ## Installation and usage
 Install from npm:
 ```
